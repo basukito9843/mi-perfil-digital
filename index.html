@@ -966,7 +966,7 @@
             </div>
 
             <div class="project-card">
-                <div class="project-image">🔧</div>
+                <div class="project-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">🔧</div>
                 <div class="project-content">
                     <h3>Proyectos Académicos</h3>
                     <p>Diversos proyectos desarrollados durante mi formación académica, aplicando conceptos de programación orientada a objetos y bases de datos.</p>
@@ -976,28 +976,30 @@
                         <span class="project-tag">Bases de Datos</span>
                     </div>
                     <p><strong>Áreas de enfoque:</strong></p>
-                    <ul style="margin-left: 1.5rem; color: var(--text);">
+                    <ul style="margin-left: 1.5rem; color: var(--text); font-size: 0.95rem;">
                         <li>Programación estructurada</li>
                         <li>Desarrollo web frontend</li>
                         <li>Gestión de datos</li>
+                        <li>Algoritmos y estructuras de datos</li>
                     </ul>
                 </div>
             </div>
 
             <div class="project-card">
-                <div class="project-image">🚀</div>
+                <div class="project-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">🚀</div>
                 <div class="project-content">
                     <h3>En Desarrollo</h3>
                     <p>Actualmente trabajando en nuevos proyectos para expandir habilidades en desarrollo web full-stack y Unreal Engine.</p>
                     <div class="project-tags">
                         <span class="project-tag">Próximos</span>
-                        <span class="project-tag">Por Venir</span>
+                        <span class="project-tag">En Progreso</span>
                     </div>
                     <p><strong>Próximos pasos:</strong></p>
-                    <ul style="margin-left: 1.5rem; color: var(--text);">
-                        <li>Proyectos de desarrollo web</li>
-                        <li>Aplicaciones mobile</li>
-                        <li>Proyectos en Unreal Engine</li>
+                    <ul style="margin-left: 1.5rem; color: var(--text); font-size: 0.95rem;">
+                        <li>Proyectos de desarrollo web responsivo</li>
+                        <li>Aplicaciones mobile con React Native</li>
+                        <li>Juegos en Unreal Engine 5</li>
+                        <li>Backend con Node.js y bases de datos</li>
                     </ul>
                 </div>
             </div>
@@ -1071,7 +1073,7 @@
                 </div>
             </div>
 
-            <form class="contact-form" action="https://formspree.io/f/maenebyk" method="POST">
+            <form class="contact-form" id="contactForm">
                 <h3>Envíame un Mensaje</h3>
 
                 <div class="form-group">
@@ -1163,4 +1165,70 @@
                 }
             });
         });
+    </script>
 
+    <!-- EmailJS Library -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/index.min.js"></script>
+    
+    <script type="text/javascript">
+        // Esperar a que emailjs esté disponible
+        function setupContactForm() {
+            if (typeof emailjs === 'undefined') {
+                // Si emailjs no está disponible aún, reintentar en 100ms
+                setTimeout(setupContactForm, 100);
+                return;
+            }
+
+            // Inicializar EmailJS
+            emailjs.init('kD8zUsWtOVURuEUmI');
+            console.log('EmailJS inicializado correctamente');
+
+            // Obtener el formulario
+            const contactForm = document.getElementById('contactForm');
+            
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    const name = document.getElementById('name').value;
+                    const email = document.getElementById('email').value;
+                    const subject = document.getElementById('subject').value;
+                    const message = document.getElementById('message').value;
+
+                    console.log('Enviando email...');
+                    console.log({name, email, subject, message});
+
+                    // Enviar email
+                    emailjs.send('service_r50kts9', 'template_6xdbn2f', {
+                        name: name,
+                        email: email,
+                        subject: subject,
+                        message: message
+                    }).then(function(response) {
+                        console.log('✅ Email enviado:', response);
+                        alert('✅ ¡Mensaje enviado exitosamente!\n\nMe pondré en contacto pronto.');
+                        contactForm.reset();
+                    }).catch(function(error) {
+                        console.error('❌ Error:', error);
+                        alert('❌ Error al enviar el mensaje:\n' + JSON.stringify(error));
+                    });
+
+                    return false;
+                });
+                console.log('✅ Formulario vinculado correctamente');
+            } else {
+                console.error('❌ ERROR: Formulario no encontrado');
+            }
+        }
+
+        // Iniciar cuando la página esté lista
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', setupContactForm);
+        } else {
+            setupContactForm();
+        }
+    </script>
+
+</body>
+</html>
