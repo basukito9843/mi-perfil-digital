@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Perfil profesional de Simón Velásquez - Desarrollador de Software">
+    <title>Simón Velásquez | Desarrollador de Software</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%232563eb'/><text x='50' y='70' font-size='60' font-weight='bold' text-anchor='middle' fill='white'>SV</text></svg>">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2563eb;
+            --secondary: #1e40af;
+            --accent: #10b981;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --text: #1e293b;
+            --gray: #64748b;
+            --border: #e2e8f0;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            color: var(--text);
+            background: white;
+            line-height: 1.6;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        /* HEADER */
+        header {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--secondary) 100%);
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            min-height: 60px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: white;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: var(--accent);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 5px;
+            padding: 8px;
+        }
+
+        .menu-toggle span {
+            width: 24px;
+            height: 3px;
+            background: white;
+            transition: 0.3s;
+        }
+
+        /* HERO */
+        .hero {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 0 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .tagline {
+            font-size: 1.3rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .profile-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 2rem auto 0;
+            border: 4px solid var(--accent);
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .profile-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* SECCIONES */
+        section {
+            width: 100%;
+            padding: 4rem 2rem;
+        }
+
+        section > *:not(.divider) {
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section-title,
+        .divider,
+        .about-grid,
+        .timeline-item,
+        .projects-grid,
+        .contact-grid,
+        .contact-form {
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .divider {
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 0.5rem auto 3rem;
+        }
+
+        #about {
+            background: var(--light);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: start;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-content h3 {
+            font-size: 1.5rem;
+            margin: 1.5rem 0 1rem;
+            color: var(--secondary);
+        }
+
+        .about-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+            width: 100%;
+        }
+
+        .skill-category h4 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* EDUCACIÓN */
+        #education {
+            background: white;
+        }
+
+        .timeline-item {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            padding: 1.5rem;
+            background: var(--light);
+            border-radius: 0.8rem;
+            border-left: 4px solid var(--accent);
+        }
+
+        .timeline-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .timeline-content h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content .date {
+            color: var(--gray);
+            margin-bottom: 0.5rem;
+        }
+
+        .certificate-item {
+            background: white;
+            padding: 1.5rem;
+            border: 2px solid var(--border);
+            border-radius: 0.8rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s;
+        }
+
+        .certificate-item:hover {
+            border-color: var(--accent);
+            box-shadow: 0 5px 15px rgba(16, 185, 129, 0.2);
+        }
+
+        .certificate-item h5 {
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        /* PROYECTOS */
+        #projects {
+            background: var(--light);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 0.8rem;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .project-content p {
+            margin-bottom: 1rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-tag {
+            background: var(--light);
+            color: var(--secondary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 1rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .project-link {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .project-link:hover {
+            color: var(--accent);
+        }
+
+        /* GALERÍA */
+        .project-images-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .project-images-gallery img {
+            border-radius: 0.5rem;
+            border: 2px solid var(--border);
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .project-images-gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        /* MODAL */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90vh;
+        }
+
+        .modal-content img {
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: 0.8rem;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        /* CONTACTO */
+        #contact {
+            background: white;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .contact-item h4 {
+            margin-bottom: 0.3rem;
+        }
+
+        .contact-item p {
+            color: var(--gray);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 0.8rem;
+            border: 2px solid var(--border);
+            border-radius: 0.5rem;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #059669;
+        }
+
+        /* BLOG */
+        #blog {
+            background: var(--light);
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.3s;
+            font-size: 1.2rem;
+        }
+
+        .social-link:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        /* ========== RESPONSIVE ========== */
+
+        @media (max-width: 1024px) {
+            section {
+                padding: 3rem 1.5rem;
+            }
+
+            .about-grid {
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 60px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 60px);
+                flex-direction: column;
+                gap: 0;
+                background: var(--secondary);
+                transition: left 0.3s;
+                overflow-y: auto;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-menu li {
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+
+            .nav-menu a {
+                display: block;
+                padding: 1.2rem;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .hero {
+                padding: 2rem 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .tagline {
+                font-size: 1.1rem;
+            }
+
+            .profile-photo {
+                width: 150px;
+                height: 150px;
+            }
+
+            section {
+                padding: 2rem 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline-item {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                padding: 0.8rem;
+                min-height: 50px;
+            }
+
+            .logo {
+                font-size: 1.1rem;
+            }
+
+            .menu-toggle span {
+                width: 20px;
+                height: 2.5px;
+            }
+
+            .hero {
+                padding: 1.5rem 1rem;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .tagline {
+                font-size: 1rem;
+            }
+
+            .hero p {
+                font-size: 0.95rem;
+            }
+
+            .profile-photo {
+                width: 120px;
+                height: 120px;
+                margin-top: 1rem;
+            }
+
+            section {
+                padding: 1.5rem 1rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .divider {
+                width: 40px;
+            }
+
+            .about-content h3 {
+                font-size: 1.1rem;
+            }
+
+            .skill-tag {
+                padding: 0.3rem 0.7rem;
+                font-size: 0.8rem;
+            }
+
+            .timeline-item {
+                padding: 1rem;
+            }
+
+            .timeline-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+
+            .project-image {
+                height: 150px;
+                font-size: 2.5rem;
+            }
+
+            .project-content h3 {
+                font-size: 1rem;
+            }
+
+            .project-content p {
+                font-size: 0.9rem;
+            }
+
+            .contact-item {
+                gap: 1rem;
+            }
+
+            .contact-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+
+            .form-group input,
+            .form-group textarea {
+                font-size: 16px;
+                min-height: 40px;
+            }
+
+            .form-group textarea {
+                min-height: 80px;
+            }
+
+            .btn {
+                padding: 0.7rem 1.5rem;
+                font-size: 0.9rem;
+                width: 100%;
+            }
+
+            .project-images-gallery {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.8rem;
+            }
+
+            footer {
+                padding: 1rem;
+            }
+
+            footer p {
+                font-size: 0.85rem;
+            }
+
+            .social-link {
+                width: 36px;
+                height: 36px;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .hero h1 {
+                font-size: 1.3rem;
+            }
+
+            .section-title {
+                font-size: 1.3rem;
+            }
+
+            .profile-photo {
+                width: 100px;
+                height: 100px;
+            }
+
+            .skill-tag {
+                padding: 0.2rem 0.5rem;
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <nav>
+            <div class="logo">💻 Simón</div>
+            <ul class="nav-menu">
+                <li><a href="#hero">Inicio</a></li>
+                <li><a href="#about">Sobre mí</a></li>
+                <li><a href="#education">Educación</a></li>
+                <li><a href="#projects">Proyectos</a></li>
+                <li><a href="#contact">Contacto</a></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <h1>Simón Velásquez Sánchez</h1>
+            <div class="tagline">Desarrollador de Software</div>
+            <p>Estudiante de Tecnología en Desarrollo de Software en la Institución Universitaria Pascual Bravo. Apasionado por la tecnología y el desarrollo de aplicaciones innovadoras.</p>
+            <div class="profile-photo">
+                <img src="profile-photo.jpg" alt="Simón Velásquez">
+            </div>
+        </div>
+    </section>
+
+    <!-- SOBRE MÍ -->
+    <section id="about">
+        <h2 class="section-title">Sobre Mí</h2>
+        <div class="divider"></div>
+        <div class="about-grid">
+            <div class="about-content">
+                <h3>Quién soy</h3>
+                <p>Soy Simón, tengo 19 años y soy estudiante de Tecnología en Desarrollo de Software en el semestre 4 de la Institución Universitaria Pascual Bravo. Tengo una media técnica en desarrollo de software y una pasión genuina por la tecnología y los videojuegos.</p>
+                <p>Mi objetivo es convertirme en un desarrollador de software versátil y competente, capaz de crear aplicaciones innovadoras que resuelvan problemas reales.</p>
+
+                <h3>Habilidades y Competencias</h3>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h4>🛠️ Técnicas</h4>
+                        <div class="skill-list">
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">C#</span>
+                            <span class="skill-tag">HTML</span>
+                            <span class="skill-tag">CSS</span>
+                            <span class="skill-tag">Unreal Engine 5</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h4>💼 Blandas</h4>
+                        <div class="skill-list">
+                            <span class="skill-tag">Liderazgo</span>
+                            <span class="skill-tag">Comunicación</span>
+                            <span class="skill-tag">Trabajo en Equipo</span>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Intereses y Aspiraciones</h3>
+                <p>Mi principal interés es continuar aprendiendo del mundo de la tecnología. Me atrae especialmente el desarrollo web e interactivo, así como la programación de videojuegos con Unreal Engine.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- EDUCACIÓN -->
+    <section id="education">
+        <h2 class="section-title">Educación y Certificaciones</h2>
+        <div class="divider"></div>
+
+        <div class="timeline-item">
+            <div class="timeline-icon">🎓</div>
+            <div class="timeline-content">
+                <h4>Tecnología en Desarrollo de Software</h4>
+                <div class="date">Institución Universitaria Pascual Bravo | Semestre 4</div>
+                <p>Formación especializada en desarrollo de software, programación, bases de datos y desarrollo de aplicaciones.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-icon">📜</div>
+            <div class="timeline-content">
+                <h4>Media Técnica en Desarrollo de Software</h4>
+                <div class="date">Completada</div>
+                <p>Formación técnica que proporciona los fundamentos en programación y desarrollo de aplicaciones.</p>
+            </div>
+        </div>
+
+        <div style="margin-top: 2rem;">
+            <h3 style="margin-bottom: 1rem;">Certificaciones</h3>
+            <div class="certificate-item">
+                <h5>✓ Certificado en Auxiliar en Desarrollo de Software</h5>
+                <p style="color: var(--gray); margin-top: 0.5rem;">Certificación que valida competencias en análisis, diseño e implementación de soluciones de software.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROYECTOS -->
+    <section id="projects">
+        <h2 class="section-title">Proyectos y Experiencia</h2>
+        <div class="divider"></div>
+
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-image">🎵</div>
+                <div class="project-content">
+                    <h3>AB Entertainment - Plataforma de Productores</h3>
+                    <p>Plataforma web profesional para conectar con productores de beats y música. Sitio interactivo que permite explorar y conectar con productores de calidad.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">HTML</span>
+                        <span class="project-tag">CSS</span>
+                        <span class="project-tag">JavaScript</span>
+                    </div>
+                    <p><strong>Características:</strong></p>
+                    <ul style="margin-left: 1.5rem; color: var(--text);">
+                        <li>Búsqueda y filtrado de productores</li>
+                        <li>Perfiles detallados de artistas</li>
+                        <li>Servicios profesionales</li>
+                        <li>Diseño responsivo</li>
+                    </ul>
+                    <a href="https://ab-enterteinment.github.io/AB--ENTERTEINMENT/" target="_blank" class="project-link">Ver Proyecto →</a>
+
+                    <div style="margin-top: 1.5rem;">
+                        <p style="font-weight: 600; margin-bottom: 1rem; color: var(--secondary);">📸 Evidencias:</p>
+                        <div class="project-images-gallery">
+                            <img src="ab-1.jpg" alt="AB Entertainment 1" onclick="openModal(this.src)">
+                            <img src="ab-2.jpg" alt="AB Entertainment 2" onclick="openModal(this.src)">
+                            <img src="ab-3.jpg" alt="AB Entertainment 3" onclick="openModal(this.src)">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">🔧</div>
+                <div class="project-content">
+                    <h3>Proyectos Académicos</h3>
+                    <p>Diversos proyectos desarrollados durante mi formación académica, aplicando conceptos de programación orientada a objetos y bases de datos.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">C#</span>
+                        <span class="project-tag">JavaScript</span>
+                        <span class="project-tag">Bases de Datos</span>
+                    </div>
+                    <p><strong>Áreas de enfoque:</strong></p>
+                    <ul style="margin-left: 1.5rem; color: var(--text);">
+                        <li>Programación estructurada</li>
+                        <li>Desarrollo web frontend</li>
+                        <li>Gestión de datos</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">🚀</div>
+                <div class="project-content">
+                    <h3>En Desarrollo</h3>
+                    <p>Actualmente trabajando en nuevos proyectos para expandir habilidades en desarrollo web full-stack y Unreal Engine.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Próximos</span>
+                        <span class="project-tag">Por Venir</span>
+                    </div>
+                    <p><strong>Próximos pasos:</strong></p>
+                    <ul style="margin-left: 1.5rem; color: var(--text);">
+                        <li>Proyectos de desarrollo web</li>
+                        <li>Aplicaciones mobile</li>
+                        <li>Proyectos en Unreal Engine</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOG -->
+    <section id="blog">
+        <h2 class="section-title">Blog y Publicaciones</h2>
+        <div class="divider"></div>
+
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">📝</div>
+                <div class="project-content">
+                    <h3>Mi Viaje en la Tecnología</h3>
+                    <p>Mi experiencia aprendiendo a programar desde cero ha sido un viaje emocionante lleno de desafíos. Comencé con HTML y CSS, luego JavaScript y C#. Cada lenguaje me ha enseñado nuevas formas de pensar y resolver problemas.</p>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">💡</div>
+                <div class="project-content">
+                    <h3>AB Entertainment - Conectando la Música</h3>
+                    <p>Mi proyecto AB Entertainment fue un desafío emocionante. El objetivo principal era crear un espacio donde artistas y productores musicales pudieran conectarse fácilmente. Aprendí mucho sobre diseño centrado en el usuario.</p>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">🎮</div>
+                <div class="project-content">
+                    <h3>Explorando Unreal Engine 5</h3>
+                    <p>Estoy iniciando mi aventura en desarrollo de videojuegos con Unreal Engine 5. Me apasiona la idea de crear experiencias interactivas inmersivas. Mi objetivo es combinar mis conocimientos de programación con la capacidad de crear mundos virtuales.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contact">
+        <h2 class="section-title">Contacto y Redes</h2>
+        <div class="divider"></div>
+
+        <div class="contact-grid">
+            <div>
+                <div class="contact-item">
+                    <div class="contact-icon">📧</div>
+                    <div>
+                        <h4>Correo Profesional</h4>
+                        <p>Para consultas académicas y profesionales</p>
+                        <a href="mailto:simonvelasquez9843@gmail.com">simonvelasquez9843@gmail.com</a>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">💼</div>
+                    <div>
+                        <h4>LinkedIn</h4>
+                        <p>Conecta conmigo en la red profesional</p>
+                        <a href="https://co.linkedin.com/in/simon-undefined-a60a87438" target="_blank">simon-undefined</a>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">📸</div>
+                    <div>
+                        <h4>Instagram</h4>
+                        <p>Sígueme en mis redes</p>
+                        <a href="https://www.instagram.com/s.__v.k.l" target="_blank">@s.__v.k.l</a>
+                    </div>
+                </div>
+            </div>
+
+            <form class="contact-form" action="https://formspree.io/f/maenebyk" method="POST">
+                <h3>Envíame un Mensaje</h3>
+
+                <div class="form-group">
+                    <label for="name">Tu Nombre</label>
+                    <input type="text" id="name" name="name" placeholder="Tu nombre completo" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Tu Correo</label>
+                    <input type="email" id="email" name="email" placeholder="tu@correo.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">Asunto</label>
+                    <input type="text" id="subject" name="subject" placeholder="Asunto del mensaje" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Mensaje</label>
+                    <textarea id="message" name="message" placeholder="Tu mensaje aquí..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- MODAL -->
+    <div id="imageModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <img id="modalImage" src="" alt="Imagen ampliada">
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="social-links">
+            <a href="mailto:simonvelasquez9843@gmail.com" class="social-link" title="Email">✉️</a>
+            <a href="https://co.linkedin.com/in/simon-undefined-a60a87438" class="social-link" title="LinkedIn">💼</a>
+            <a href="https://www.instagram.com/s.__v.k.l" class="social-link" title="Instagram">📸</a>
+        </div>
+        <p>&copy; 2024 Simón Velásquez Sánchez. Todos los derechos reservados.</p>
+        <p style="font-size: 0.9rem; opacity: 0.7;">Desarrollador de Software | Institución Universitaria Pascual Bravo</p>
+    </footer>
+
+    <script>
+        // MENÚ MÓVIL
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.querySelector('.nav-menu');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // MODAL DE IMÁGENES
+        function openModal(src) {
+            document.getElementById('imageModal').classList.add('active');
+            document.getElementById('modalImage').src = src;
+        }
+
+        function closeModal() {
+            document.getElementById('imageModal').classList.remove('active');
+        }
+
+        document.getElementById('imageModal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        // SCROLL SUAVE
+        // SCROLL SUAVE
+        document.querySelectorAll('a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const id = this.getAttribute('href');
+                const element = document.querySelector(id);
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
